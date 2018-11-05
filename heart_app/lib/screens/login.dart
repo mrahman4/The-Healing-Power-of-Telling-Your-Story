@@ -50,10 +50,10 @@ class _LoginState extends State<LoginScreen> {
     });
   }
 
-  void _signUp(BuildContext context)
+  void _signUp (BuildContext context) async
   {
 
-    Navigator.push(
+    final result = await Navigator.push(
       context,
       MaterialPageRoute(builder: (context) =>
           SignUpScreen(
@@ -63,6 +63,8 @@ class _LoginState extends State<LoginScreen> {
               foregroundColor: widget.foregroundColor,
           )),
     );
+
+    _emailEditor.text = result.toString() ;
 
   }
 
@@ -82,7 +84,7 @@ class _LoginState extends State<LoginScreen> {
       child: Column(
         children: <Widget>[
           Container(
-            padding: const EdgeInsets.only(top: 70.0, bottom: 50.0),
+            padding: const EdgeInsets.only(top: 100.0, bottom: 50.0),
             child: Center(
               child: new Column(
                 children: <Widget>[
@@ -198,29 +200,6 @@ class _LoginState extends State<LoginScreen> {
               ),
             ),
 
-          new Container(
-            width: MediaQuery.of(context).size.width,
-            margin: const EdgeInsets.only(left: 40.0, right: 40.0, top: 10.0),
-            alignment: Alignment.center,
-            child: new Row(
-              children: <Widget>[
-                new Expanded(
-                  child: new FlatButton(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 20.0, horizontal: 20.0),
-                    color: Colors.transparent,
-                    onPressed: () => {},
-                    child: Text(
-                      "Forgot your password?",
-                      style: TextStyle(color: widget.foregroundColor.withOpacity(0.5)),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          //new Expanded(child: Divider(),),
 
           new Container(
             width: MediaQuery.of(context).size.width,

@@ -48,16 +48,17 @@ class _SignUpState extends State<SignUpScreen> {
         .cognitoSignUp(
             userEmail: _emailEditor.text, password: _passwordEditor.text, language: _language)
         .then((token) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => TimelineScreen(
-                backgroundColor1: widget.backgroundColor1,
-                backgroundColor2: widget.backgroundColor2,
-                highlightColor: widget.highlightColor,
-                foregroundColor: widget.foregroundColor,
-                awsWrapper: awsWrapper)),
-      );
+          /*Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => TimelineScreen(
+                    backgroundColor1: widget.backgroundColor1,
+                    backgroundColor2: widget.backgroundColor2,
+                    highlightColor: widget.highlightColor,
+                    foregroundColor: widget.foregroundColor,
+                    awsWrapper: awsWrapper)),
+          );*/
+        Navigator.pop(context, _emailEditor.text);
     });
   }
 
@@ -78,9 +79,11 @@ class _SignUpState extends State<SignUpScreen> {
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: <Widget>[
+
+
           new Container(
             width: MediaQuery.of(context).size.width,
-            margin: const EdgeInsets.only(left: 40.0, right: 40.0),
+            margin: const EdgeInsets.only(left: 40.0, right: 40.0, top: 200.0),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               border: Border(
@@ -97,7 +100,7 @@ class _SignUpState extends State<SignUpScreen> {
               children: <Widget>[
                 new Padding(
                   padding:
-                      EdgeInsets.only(top: 200.0, bottom: 10.0, right: 00.0),
+                  EdgeInsets.only(top: 10.0, bottom: 10.0, right: 00.0),
                   child: Icon(
                     Icons.alternate_email,
                     color: widget.foregroundColor,
@@ -106,6 +109,7 @@ class _SignUpState extends State<SignUpScreen> {
                 new Expanded(
                   child: TextField(
                     controller: _emailEditor,
+                    //obscureText: true,
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -117,6 +121,7 @@ class _SignUpState extends State<SignUpScreen> {
               ],
             ),
           ),
+
 
           new Container(
             width: MediaQuery.of(context).size.width,
